@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ingredient.name %>
+</p>
+
+<p>
+	<strong>Inventory:</strong>
+	<%= @ingredient.inventory %>
+</p>
+
+<p>
+	<strong>Source:</strong>
+	<%= @ingredient.source %>
+</p>
+
+<p>
+	<strong>Price:</strong>
+	<%= @ingredient.price %>
+</p>
+
+<p>
+	<strong>Days Until Expiration:</strong>
+	<% if @ingredient.days_til_expired > 5 %>
+		<span class="fine"><%= @ingredient.days_til_expired %></span>
+	<% elsif @ingredient.days_til_expired <= 5 && @ingredient.days_til_expired > 0 %>
+		<span class="expiring"><%= @ingredient.days_til_expired %></span>
+	<% else %>
+		<span class="expiring">Expired!</span>
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>
